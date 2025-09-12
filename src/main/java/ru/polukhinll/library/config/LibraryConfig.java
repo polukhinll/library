@@ -17,7 +17,7 @@ import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 import javax.sql.DataSource;
 
 /**
- * @author Neil Alishev
+ * @author Kirill Polukhin
  */
 @Configuration
 @ComponentScan("ru.polukhinll.library")
