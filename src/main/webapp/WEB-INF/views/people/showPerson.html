@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${person.getFio()}">fio</title>
+</head>
+<body>
+<p th:text="${person.getFio()} + ', ' + ${person.getYearOfBirth()}"></p>
+<br/>
+<hr/>
+<form th:method="DELETE" th:action="@{/id}" th:object="${person}">
+    <input type="submit" value="Удалить!"/>
+</form>
+</body>
+</html>

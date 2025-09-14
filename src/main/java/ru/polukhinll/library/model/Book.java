@@ -17,14 +17,14 @@ public class Book {
 
     @Min(value = 1000, message = "year_of_publication should be more than 1000")
     @Max(value = 2025, message = "year_of_publication should be less than 2026")
-    private int year_of_publication;
+    private int yearOfPublication;
 
     public Book() {}
 
-    public Book(String title, String author, int year_of_publication) {
+    public Book(String title, String author, int yearOfPublication) {
         this.title = title;
         this.author = author;
-        this.year_of_publication = year_of_publication;
+        this.yearOfPublication = yearOfPublication;
    }
 
     public String getTitle() {
@@ -35,19 +35,19 @@ public class Book {
         this.title = title;
     }
 
+    public int getYearOfPublication() {
+        return yearOfPublication;
+    }
+
+    public void setYearOfPublication(int yearOfPublication) {
+        this.yearOfPublication = yearOfPublication;
+    }
+
     public String getAuthor() {
         return author;
     }
 
     public void setAuthor(String author) {
         this.author = author;
-    }
-
-    public int getYear_of_publication() {
-        return year_of_publication;
-    }
-
-    public void setYear_of_publication(int year_of_publication) {
-        this.year_of_publication = year_of_publication;
     }
 }

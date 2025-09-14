@@ -6,18 +6,29 @@ import javax.validation.constraints.Size;
 
 public class Person {
 
+    private int person_id;
+
     @NotEmpty(message = "fio should be not empty")
     @Size(min = 3, max = 150, message = "size of fio should be between 3 of 150")
     private String fio;
 
     @Max(value = 2025, message = "year_of_birth should be less than 2026")
-    private int year_of_birth;
+    private int yearOfBirth;
 
     public Person() {}
 
-    public Person(String fio, int year_of_birth) {
+    public int getPerson_id() {
+        return person_id;
+    }
+
+    public void setPerson_id(int person_id) {
+        this.person_id = person_id;
+    }
+
+    public Person(int person_id, String fio, int yearOfBirth) {
+        this.person_id = person_id;
         this.fio = fio;
-        this.year_of_birth = year_of_birth;
+        this.yearOfBirth = yearOfBirth;
     }
 
     public String getFio() {
@@ -28,11 +39,11 @@ public class Person {
         this.fio = fio;
     }
 
-    public int getYear_of_birth() {
-        return year_of_birth;
+    public int getYearOfBirth() {
+        return yearOfBirth;
     }
 
-    public void setYear_of_birth(int year_of_birth) {
-        this.year_of_birth = year_of_birth;
+    public void setYearOfBirth(int yearOfBirth) {
+        this.yearOfBirth = yearOfBirth;
     }
 }
