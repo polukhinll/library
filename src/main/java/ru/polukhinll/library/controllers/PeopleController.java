@@ -29,10 +29,11 @@ public class PeopleController {
     @GetMapping("/{id}")
     public String showPerson(@PathVariable("id") int id, Model model) {
         model.addAttribute("person", personDAO.showPerson(id));
+        model.addAttribute("books", personDAO.haveBooks(id));
         return "people/showPerson";
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public String deletePerson(@PathVariable("id") int id) {
         personDAO.delete(id);
         return "redirect:/people";

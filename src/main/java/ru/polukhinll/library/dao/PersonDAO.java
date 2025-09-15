@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
+import ru.polukhinll.library.model.Book;
 import ru.polukhinll.library.model.Person;
 
 import java.util.List;
@@ -39,5 +40,10 @@ public class PersonDAO {
     public void edit(int id, Person person) {
         jdbcTemplate.update("UPDATE Person SET fio=?, yearOfBirth=? WHERE person_id=?",
                 person.getFio(), person.getYearOfBirth(), id);
+    }
+
+    public List<Book> haveBooks(int id) {
+        return jdbcTemplate.query("SELECT * FROM Book WHERE person_id=?", new Object[]{id},
+                new BeanPropertyRowMapper<>(Book.class));
     }
 }

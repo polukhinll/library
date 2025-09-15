@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${book.getTitle()}"></title>
+</head>
+<body>
+    <p th:text="${book.getTitle()} + ', ' + ${book.getAuthor()} + ', ' + ${book.getYearOfPublication()}">value</p>
+    <hr/>
+
+    <div th:if="${takedBooks.isEmpty()}">
+        <p>Эта книга свободна. Кому назначить её?</p>
+        <form th:method="patch" th:action="@{/books/{id}/appoint(id=${book.getBook_id()})}">
+            <label for="people">Выберите человека: </label>
+            <select th:object="${person}" th:field="*{person_id}" id="people">
+                <option th:each="pers: ${people}" th:value="${pers.getPerson_id()}"
+                th:text="${pers.getFio()}"></option>
+            </select>
+
+            <input type="submit" value="Назначить">
+        </form>
+    </div>
+
+    <form th:method="DELETE" th:action="@{/books/delete/{id}(id=${book.getBook_id()})}" th:object="${book}">
+        <input type="submit" value="Удалить!"/>
+    </form>
+    <br/>
+
+    <a th:href="@{/book/{id}/edit(id=${book.getBook_id()})}">
+        <button type="button">Редактировать</button>
+    </a>
+</body>
+</html>
